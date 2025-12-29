@@ -1,16 +1,13 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 
 export default function Register() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const navigate = useNavigate()
 
-  const handleRegister = async (e) => {
+  const handleRegister = (e) => {
     e.preventDefault()
     alert('Registrado (falta backend)')
-    navigate('/')
   }
 
   return (
