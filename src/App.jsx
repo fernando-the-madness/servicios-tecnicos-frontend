@@ -1,16 +1,35 @@
 import React from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Login from './pages/Login.jsx'
-import Register from './pages/Register.jsx'
-
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Login from './components/auth/Login'
+import Register from './components/auth/Register'
+import PrivateRoute from './components/common/PrivateRoute'
+import ClientDashboard from './components/client/ClientDashboard.jsx'
+import TechnicianDashboard from './components/technician/TechnicianDashboard.jsx'
 function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route
+          path="/cliente"
+          element={
+            <PrivateRoute role="cliente">
+              <ClientDashboard />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/tecnico"
+          element={
+            <PrivateRoute role="tecnico">
+              <TechnicianDashboard />
+            </PrivateRoute>
+          }
+        />
       </Routes>
-    </BrowserRouter>
+    </Router>
   )
 }
+
 export default App
